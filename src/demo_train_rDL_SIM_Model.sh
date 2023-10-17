@@ -21,9 +21,9 @@
 # --norm_flag: 1 for min-max normalization, 0 for dividing 65535 (16-bit images)
 
 # ----------------------------------- train SR inference module -----------------------------------
-python train_SR_Inference_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
+python train_SR_Inference_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
                                      --root_path "../data_train/rDL-SIM/SR/" \
-                                    --data_folder "Microtubules" \
+                                    --data_folder "Microtubules_result" \
                                     --save_weights_path "../trained_models/SR_Inference_Module/" \
                                     --save_weights_suffix "" \
                                     --load_weights_flag 0 \
@@ -56,9 +56,9 @@ python train_SR_Inference_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
 # --excNA: the excitation NA of SIM
 
 # ---------------------------------- train rDL denoising module -----------------------------------
-python train_rDL_Denoising_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
+python train_rDL_Denoising_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
                                      --root_path "../data_train/rDL-SIM/DN/" \
-                                     --data_folder "Microtubules" \
+                                     --data_folder "Microtubules_result" \
                                      --save_weights_path "../trained_models/rDL_Denoising_Module/" \
                                      --save_weights_suffix "" \
                                      --denoise_model "rDL_Denoiser" \

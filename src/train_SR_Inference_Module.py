@@ -199,6 +199,7 @@ for iter in range(total_iterations):
     # ---------------------------------------------
     #         train SR inference module
     # ---------------------------------------------
+    # data_loader如何读取
     img_in, img_gt = data_loader(images_path, train_img_path, train_gt_path, input_height, input_width,
                                  batch_size, norm_flag=norm_flag, scale=scale_factor)
     img_in = prctile_norm(img_in)

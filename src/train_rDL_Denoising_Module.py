@@ -108,6 +108,7 @@ if not os.path.exists(log_path):
     os.mkdir(log_path)
 
 # define SIM parameters
+# 结构光参数，不知道我们的是什么
 wave_length = args.wave_length
 excNA = args.excNA
 OTF_path_488 = args.OTF_path_488

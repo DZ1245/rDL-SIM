@@ -89,15 +89,18 @@ class ReduceLROnPlateau():
 #                               Data processing tools
 # ---------------------------------------------------------------------------------------
 def data_loader(images_path, data_path, gt_path, height, width, batch_size, norm_flag=1, resize_flag=0, scale=2, wf=0):
+    # 随机选择
     batch_images_path = np.random.choice(images_path, size=batch_size)
     image_batch = []
     gt_batch = []
     for path in batch_images_path:
         if path[-3:] == 'tif':
+            # 直接单张tif
             curBatch = tiff.imread(path)
             path_gt = path.replace(data_path, gt_path)
             gt = imageio.imread(path_gt).astype(np.float)
         else:
+            # 文件夹下存储图片数据
             img_path = glob.glob(path + '/*.tif')
             img_path.sort()
             curBatch = []
