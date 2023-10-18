@@ -20,19 +20,20 @@
 # --scale_factor: upscaling factor for image super-resolution, 2 by default for linear SIM
 # --norm_flag: 1 for min-max normalization, 0 for dividing 65535 (16-bit images)
 
+# --root_path "../data_train/rDL-SIM/SR/" \
 # ----------------------------------- train SR inference module -----------------------------------
-python train_SR_Inference_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
-                                     --root_path "../data_train/rDL-SIM/SR/" \
-                                    --data_folder "Microtubules_result" \
-                                    --save_weights_path "../trained_models/SR_Inference_Module/" \
-                                    --save_weights_suffix "" \
-                                    --load_weights_flag 0 \
-                                    --model_name "DFCAN" \
-                                    --total_iterations 100000 --sample_interval 1000 \
-                                    --validate_interval 2000 --validate_num 1000 \
-                                    --batch_size 4 --start_lr 1e-4 \
-                                    --input_height 128 --input_width 128 --input_channels 9 \
-                                    --scale_factor 2 --norm_flag 1
+# python train_SR_Inference_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
+#                                     --root_path "/data/home/dz/rDL_SIM/SR/" \
+#                                     --data_folder "Microtubules_result" \
+#                                     --save_weights_path "../trained_models/SR_Inference_Module/" \
+#                                     --save_weights_suffix "" \
+#                                     --load_weights_flag 0 \
+#                                     --model_name "DFCAN" \
+#                                     --total_iterations 100000 --sample_interval 1000 \
+#                                     --validate_interval 2000 --validate_num 1000 \
+#                                     --batch_size 2 --start_lr 1e-4 \
+#                                     --input_height 128 --input_width 128 --input_channels 9 \
+#                                     --scale_factor 2 --norm_flag 1
 
 # ------------------------------- STEP 2: train rDL denoising module ------------------------------
 # ------------------------------------ Arguments description --------------------------------------
@@ -57,7 +58,7 @@ python train_SR_Inference_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
 
 # ---------------------------------- train rDL denoising module -----------------------------------
 python train_rDL_Denoising_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
-                                     --root_path "../data_train/rDL-SIM/DN/" \
+                                     --root_path "/data/home/dz/rDL_SIM/DN/" \
                                      --data_folder "Microtubules_result" \
                                      --save_weights_path "../trained_models/rDL_Denoising_Module/" \
                                      --save_weights_suffix "" \
@@ -68,5 +69,6 @@ python train_rDL_Denoising_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
                                      --total_iterations 200000 --sample_interval 1000 \
                                      --validate_interval 2000 --validate_num 500 \
                                      --input_height 128 --input_width 128 \
-                                     --wave_length 488 --excNA 1.35
+                                     --wave_length 488 --excNA 1.35 \
+                                     --batch_size 2
 
