@@ -22,7 +22,7 @@
 
 # --root_path "../data_train/rDL-SIM/SR/" \
 # ----------------------------------- train SR inference module -----------------------------------
-# python train_SR_Inference_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
+# python train_SR_Inference_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
 #                                     --root_path "/data/home/dz/rDL_SIM/SR/" \
 #                                     --data_folder "Microtubules_result" \
 #                                     --save_weights_path "../trained_models/SR_Inference_Module/" \
@@ -57,7 +57,7 @@
 # --excNA: the excitation NA of SIM
 
 # ---------------------------------- train rDL denoising module -----------------------------------
-python train_rDL_Denoising_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
+python train_rDL_Denoising_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
                                      --root_path "/data/home/dz/rDL_SIM/DN/" \
                                      --data_folder "Microtubules_result" \
                                      --save_weights_path "../trained_models/rDL_Denoising_Module/" \
@@ -70,5 +70,5 @@ python train_rDL_Denoising_Module.py --gpu_id '0,1' --gpu_memory_fraction 0.4 \
                                      --validate_interval 2000 --validate_num 500 \
                                      --input_height 128 --input_width 128 \
                                      --wave_length 488 --excNA 1.35 \
-                                     --batch_size 2
+                                     # --batch_size 1
 
