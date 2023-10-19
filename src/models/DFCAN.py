@@ -96,7 +96,7 @@ def FCAB(input, channel):
 
 def ResidualGroup(input, channel):
     conv = input
-    n_RCAB = 4
+    n_RCAB = 4 
     for _ in range(n_RCAB):
         conv = FCAB(conv, channel)
     conv = add([conv, input])
