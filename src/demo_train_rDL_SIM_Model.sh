@@ -22,19 +22,19 @@
 
 # --root_path "../data_train/rDL-SIM/SR/" \
 # ----------------------------------- train SR inference module -----------------------------------
-# python train_SR_Inference_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
-#                                     --root_path "/data/home/dz/rDL_SIM/SR/" \
-#                                     --data_folder "Microtubules_result" \
-#                                     --save_weights_path "../trained_models/SR_Inference_Module/" \
-#                                     --save_weights_suffix "" \
-#                                     --load_weights_flag 0 \
-#                                     --model_name "DFCAN" \
-#                                     --total_iterations 100000 --sample_interval 1000 \
-#                                     --validate_interval 2000 --validate_num 1000 \
-#                                     --batch_size 2 --start_lr 1e-4 \
-#                                     --input_height 128 --input_width 128 --input_channels 9 \
-#                                     --scale_factor 2 --norm_flag 1
-
+python train_SR_Inference_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
+                                    --root_path "/mnt/data2_16T/datasets/zhi.deng/Biology_cell/rDL_SIM/SR/" \
+                                    --data_folder "Microtubules_result" \
+                                    --save_weights_path "../trained_models/SR_Inference_Module/" \
+                                    --save_weights_suffix "" \
+                                    --load_weights_flag 0 \
+                                    --model_name "DFCAN" \
+                                    --total_iterations 100000 --sample_interval 1000 \
+                                    --validate_interval 2000 --validate_num 1000 \
+                                    --batch_size 2 --start_lr 1e-4 \
+                                    --input_height 128 --input_width 128 --input_channels 9 \
+                                    --scale_factor 2 --norm_flag 1
+# 2080ti batch_size=2 4090 batch_size=
 # ------------------------------- STEP 2: train rDL denoising module ------------------------------
 # ------------------------------------ Arguments description --------------------------------------
 # --gpu_id: the gpu device you want to use in current task
@@ -57,18 +57,18 @@
 # --excNA: the excitation NA of SIM
 
 # ---------------------------------- train rDL denoising module -----------------------------------
-python train_rDL_Denoising_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
-                                     --root_path "/data/home/dz/rDL_SIM/DN/" \
-                                     --data_folder "Microtubules_result" \
-                                     --save_weights_path "../trained_models/rDL_Denoising_Module/" \
-                                     --save_weights_suffix "" \
-                                     --denoise_model "rDL_Denoiser" \
-                                     --load_sr_module_dir "../trained_models/SR_Inference_Module/" \
-                                     --load_sr_module_filter "*Best.h5" \
-                                     --sr_model "DFCAN" \
-                                     --total_iterations 200000 --sample_interval 1000 \
-                                     --validate_interval 2000 --validate_num 500 \
-                                     --input_height 128 --input_width 128 \
-                                     --wave_length 488 --excNA 1.35 \
-                                     # --batch_size 1
+# python train_rDL_Denoising_Module.py --gpu_id '0' --gpu_memory_fraction 0.4 \
+#                                      --root_path "/mnt/data2_16T/datasets/zhi.deng/Biology_cell/rDL_SIM/DN/" \
+#                                      --data_folder "Microtubules_result" \
+#                                      --save_weights_path "../trained_models/rDL_Denoising_Module/" \
+#                                      --save_weights_suffix "" \
+#                                      --denoise_model "rDL_Denoiser" \
+#                                      --load_sr_module_dir "../trained_models/SR_Inference_Module/" \
+#                                      --load_sr_module_filter "*Best.h5" \
+#                                      --sr_model "DFCAN" \
+#                                      --total_iterations 200000 --sample_interval 1000 \
+#                                      --validate_interval 2000 --validate_num 500 \
+#                                      --input_height 128 --input_width 128 \
+#                                      --wave_length 488 --excNA 1.35 \
+#                                      # --batch_size 1
 
